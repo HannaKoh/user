@@ -1,0 +1,46 @@
+.Registration {
+    position: absolute;
+    top: 13%;
+    left: 37%;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 1em;
+    box-sizing: border-box;
+    width: 30em;
+    height: 38em;
+    padding: 0em 4em 0em 0.5em;
+
+}
+
+.navLink {
+    text-decoration: none;
+}
+
+.Input {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+
+}
+
+.Pole {
+    width: 22em;
+}
+
+.Button {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.FontButton {
+    border-radius: 5em;
+    width: 25em;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.Basic {
+    position: relative;
+    left: 30px;
+    right: 37px;
+}
+.Exit {
+    float: left;
+}

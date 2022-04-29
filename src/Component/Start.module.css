@@ -1,0 +1,44 @@
+.Img {
+    margin-left: 5em;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    height: 50em;
+    width: 50em;
+}
+
+.startPage {
+    float: left;
+    margin-left: 10em;
+    text-align: left;
+    margin-top: 7.5em;
+    margin-bottom: 5em;
+}
+
+
+.ML {
+    align: left;
+    font-size: 4rem;
+    margin-bottom: 2em;
+}
+
+.Ivan {
+    color: #1976D2;
+}
+
+.Registration {
+
+    margin-bottom: 5em;
+}
+
+.navLink {
+    text-decoration: none;
+}
+
+.Button {
+
+    border-radius: 5em;
+    width: 25em;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
