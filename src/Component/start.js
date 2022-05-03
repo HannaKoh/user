@@ -3,12 +3,14 @@ import logo from './ai.svg';
 import s from "./Start.module.css";
 import Button from '@mui/material/Button';
 import {NavLink} from "react-router-dom";
-import PopUp from "./PopUp";
+import PopUpRegistration from "./PopUpRegistration";
 import { useState } from 'react';
+import PopUpLogin from "./PopUpLogin";
 
 const Start = (props) => {
 
-    const [buttonPopup, setButtonPopup] = useState(false);
+    const [buttonPopupRegistration, setButtonPopupRegistration] = useState(false);
+    const [buttonPopupLogin, setButtonPopupLogin] = useState(false);
 
     return (
         <div>
@@ -28,16 +30,21 @@ const Start = (props) => {
                     {/*<NavLink to='/registration' className={s.navLink}>*/}
                     {/*    <Button className={s.Button} variant="contained" color="primary" >Зарегистрируйтесь</Button>*/}
                     {/*</NavLink>*/}
-                    <Button className={s.Button} variant="contained" onClick={() => setButtonPopup(true) }>Зарегистрируйтесь</Button>
+                    <Button className={s.Button} variant="contained"
+                            onClick={() => setButtonPopupRegistration(true) }>Зарегистрируйтесь</Button>
                 </div>
                 <div>
                     <h3 align="left">Уже зарегистрированы?</h3>
-                    <NavLink to='/login' className={s.navLink}>
-                        <Button className={s.Button} variant="outlined" color="primary" href='/login'>Войти</Button>
-                    </NavLink>
+                    {/*<NavLink to='/login' className={s.navLink}>*/}
+                    {/*    <Button className={s.Button} variant="outlined" color="primary" href='/login'>Войти</Button>*/}
+                    {/*</NavLink>*/}
+                    <Button className={s.Button} variant="outlined" color="primary"
+                            onClick={() => setButtonPopupLogin(true) }>Войти</Button>
                 </div>
-                <PopUp trigger={buttonPopup} setTrigger={setButtonPopup}>
-                </PopUp>
+                <PopUpRegistration trigger={buttonPopupRegistration} setTrigger={setButtonPopupRegistration} store={props.store.registrationPage}>
+                </PopUpRegistration>
+                <PopUpLogin trigger={buttonPopupLogin} setTrigger={setButtonPopupLogin} store={props.store.loginPage}>
+                </PopUpLogin>
             </div>
         </div>
     )

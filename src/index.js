@@ -19,7 +19,7 @@ ReactDOM.render(
             <div className="App">
                 {/*<Start />*/}
                 <Routes >
-                    <Route path='/' element={<Start />} />
+                    <Route path='/' element={<Start store={store}/>} />
                     <Route path='/registration'  element={<Registration store={store.registrationPage}/>} />
                     <Route path='/login' element={<Login store={store.loginPage}/>} />
                 </Routes>
