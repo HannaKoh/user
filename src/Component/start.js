@@ -1,11 +1,13 @@
 import React from "react";
 import logo from './ai.svg';
-import s from "./Start.module.css";
+import s from "./Start.module.scss";
 import Button from '@mui/material/Button';
 import {NavLink} from "react-router-dom";
-import PopUpRegistration from "./PopUpRegistration";
+import RegistrationPopUp from "./RegistrationPopUp";
 import { useState } from 'react';
-import PopUpLogin from "./PopUpLogin";
+import LoginPopUp from "./LoginPopUp";
+import {updateAreaLogin, updateAreaRegistration} from "./redux/store";
+
 
 const Start = (props) => {
 
@@ -14,7 +16,6 @@ const Start = (props) => {
 
     return (
         <div>
-
             <img className={s.Img} align="left" src={logo}/>
             <div className={s.startPage}>
                 <div>
@@ -41,10 +42,13 @@ const Start = (props) => {
                     <Button className={s.Button} variant="outlined" color="primary"
                             onClick={() => setButtonPopupLogin(true) }>Войти</Button>
                 </div>
-                <PopUpRegistration trigger={buttonPopupRegistration} setTrigger={setButtonPopupRegistration} store={props.store.registrationPage}>
-                </PopUpRegistration>
-                <PopUpLogin trigger={buttonPopupLogin} setTrigger={setButtonPopupLogin} store={props.store.loginPage}>
-                </PopUpLogin>
+                <RegistrationPopUp trigger={buttonPopupRegistration} setTrigger={setButtonPopupRegistration} store={props.store.registrationPage}
+                                   addUser={props.addUser}
+                                   updateAreaRegistration={props.updateAreaRegistration}>
+                </RegistrationPopUp>
+                <LoginPopUp trigger={buttonPopupLogin} setTrigger={setButtonPopupLogin} store={props.store.loginPage}
+                            updateAreaLogin={props.updateAreaLogin}>
+                </LoginPopUp>
             </div>
         </div>
     )
