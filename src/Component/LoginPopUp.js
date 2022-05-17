@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import logo from './AI-log.svg';
 import s from './LoginPopUp.module.scss';
 
+
 const LoginPopUp = (props) => {
 
     let closeClickPopUp = () => {
@@ -37,6 +38,24 @@ const LoginPopUp = (props) => {
         }
     }
 
+    let TextFieldEr = () => {
+        return (<TextField className = {s.Pole}
+            error
+            id="outlined-error-helper-text"
+            label="Пароль"
+            defaultValue="Hello World"
+            helperText='Неверный пароль. Повторите попытку или нажмите на ссылку "Забыли пароль?", чтобы сбросить его.'
+            value={props.store.password}
+        />);
+    }
+
+    let PasswordText = () => {
+       return ( <TextField inputRef={passwordName} onChange={onAreaChange}
+                   className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined">
+        </TextField>
+       );
+    }
+
     return (props.trigger) ? (
         <div className={s.PopUp}>
             <div className={s.Popup_inner}>
@@ -53,12 +72,12 @@ const LoginPopUp = (props) => {
                                    className={s.Pole} id="outlined-basic" label="Имя пользователя" variant="outlined"/>
                     </div>
                     <div className={s.Input}>
-                        <TextField inputRef={passwordName} onChange={onAreaChange}
-                                   className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined"/>
+                        <PasswordText />
+                        <TextFieldEr />
                     </div>
                     <div>
                         <Button className={s.FontButton} variant="contained" color="primary"
-                                onClick={ logIn }>Вход</Button>
+                                onClick={logIn}>Вход</Button>
                     </div>
                     <div className={s.Button_Reg}>
                         <Button className={s.FontButtonReg} width='12em' variant="text">Забыли пароль?</Button>
