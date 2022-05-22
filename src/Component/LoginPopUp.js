@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import logo from './AI-log.svg';
 import s from './LoginPopUp.module.scss';
+import {Checkbox, FormControlLabel} from "@mui/material";
 
 
 const LoginPopUp = (props) => {
@@ -26,11 +27,12 @@ const LoginPopUp = (props) => {
         if (props.store.userName === 'Anna' && props.store.password === '8') {
             props.setTrigger(false);
         } else {
-            if (props.store.userName != 'Anna' && props.store.password === '8') {
+            if (props.store.userName !== 'Anna' && props.store.password === '8') {
                 return alert('Не правильно введено имя пользователя')
             } else {
-                if (props.store.userName === 'Anna' && props.store.password != '8') {
-                    return alert('Не правильно введен пароль')
+                if (props.store.userName === 'Anna' && props.store.password !== '8') {
+                    return props.passwordIsTrueOrFalse(false);
+                    //alert('Не правильно введен пароль')
                 } else {
                     return alert('Не правильно введено имя пользователя и пароль')
                 }
@@ -39,21 +41,28 @@ const LoginPopUp = (props) => {
     }
 
     let TextFieldEr = () => {
-        return (<TextField className = {s.Pole}
-            error
-            id="outlined-error-helper-text"
-            label="Пароль"
-            defaultValue="Hello World"
-            helperText='Неверный пароль. Повторите попытку или нажмите на ссылку "Забыли пароль?", чтобы сбросить его.'
-            value={props.store.password}
+        return (<TextField className={s.Pole}
+                           error
+                           id="outlined-error-helper-text"
+                           label="Пароль"
+                           defaultValue="Hello World"
+                           helperText='Неверный пароль. Повторите попытку или нажмите на ссылку "Забыли пароль?", чтобы сбросить его.'
+                           value={props.store.password}
         />);
     }
 
     let PasswordText = () => {
-       return ( <TextField inputRef={passwordName} onChange={onAreaChange}
-                   className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined">
-        </TextField>
-       );
+        return (<TextField inputRef={passwordName} onChange={onAreaChange}
+                           className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined">
+            </TextField>
+        );
+    }
+
+    function Password(props) {
+        if (props.passwordIsTrueOrFalse) {
+            return <PasswordText/>;
+        }
+        return <TextFieldEr/>;
     }
 
     return (props.trigger) ? (
@@ -72,8 +81,10 @@ const LoginPopUp = (props) => {
                                    className={s.Pole} id="outlined-basic" label="Имя пользователя" variant="outlined"/>
                     </div>
                     <div className={s.Input}>
-                        <PasswordText />
-                        <TextFieldEr />
+                        <Password passwordIsTrueOrFalse={true}/>
+                    </div>
+                    <div>
+                        <FormControlLabel control={<Checkbox/>} label="Запомнить пароль"/>
                     </div>
                     <div>
                         <Button className={s.FontButton} variant="contained" color="primary"
