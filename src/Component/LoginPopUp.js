@@ -10,8 +10,11 @@ import {Checkbox, FormControlLabel} from "@mui/material";
 
 const LoginPopUp = (props) => {
 
+    const [enabled, setEnabled] = useState("false");
+
     let closeClickPopUp = () => {
         props.setTrigger(false);
+        setEnabled(true);
     }
 
     let userName = React.createRef();
@@ -26,14 +29,15 @@ const LoginPopUp = (props) => {
     let logIn = () => {
         if (props.store.userName === 'Anna' && props.store.password === '8') {
             props.setTrigger(false);
+            setEnabled(true);
         } else {
             if (props.store.userName !== 'Anna' && props.store.password === '8') {
                 return alert('Не правильно введено имя пользователя')
             } else {
                 if (props.store.userName === 'Anna' && props.store.password !== '8') {
-                    return props.passwordIsTrueOrFalse(false);
-                    //alert('Не правильно введен пароль')
+                    return setEnabled(false);
                 } else {
+
                     return alert('Не правильно введено имя пользователя и пароль')
                 }
             }
@@ -41,19 +45,23 @@ const LoginPopUp = (props) => {
     }
 
     let TextFieldEr = () => {
-        return (<TextField className={s.Pole}
-                           error
-                           id="outlined-error-helper-text"
-                           label="Пароль"
-                           defaultValue="Hello World"
-                           helperText='Неверный пароль. Повторите попытку или нажмите на ссылку "Забыли пароль?", чтобы сбросить его.'
-                           value={props.store.password}
+        return (<TextField
+            inputRef={passwordName} onChange={onAreaChange} type={"password"}
+            className={s.Pole}
+            error
+            id="outlined-error-helper-text"
+            label="Пароль"
+            defaultValue=""
+            helperText='Неверный пароль. Повторите попытку или нажмите на ссылку "Забыли пароль?", чтобы сбросить его.'
+            autoFocus
         />);
     }
 
+
     let PasswordText = () => {
-        return (<TextField inputRef={passwordName} onChange={onAreaChange}
-                           className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined">
+        return (
+            <TextField inputRef={passwordName} onChange={onAreaChange} type={"password"}
+                       className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined">
             </TextField>
         );
     }
@@ -80,20 +88,22 @@ const LoginPopUp = (props) => {
                         <TextField inputRef={userName} onChange={onAreaChange}
                                    className={s.Pole} id="outlined-basic" label="Имя пользователя" variant="outlined"/>
                     </div>
-                    <div className={s.Input}>
-                        <Password passwordIsTrueOrFalse={true}/>
+                    <div>
+                        <Password passwordIsTrueOrFalse={enabled}/>
                     </div>
                     <div>
                         <FormControlLabel control={<Checkbox/>} label="Запомнить пароль"/>
                     </div>
-                    <div>
-                        <Button className={s.FontButton} variant="contained" color="primary"
-                                onClick={logIn}>Вход</Button>
-                    </div>
-                    <div className={s.Button_Reg}>
-                        <Button className={s.FontButtonReg} width='12em' variant="text">Забыли пароль?</Button>
-                        &#183;
-                        <Button className={s.FontButtonReg} variant="text">Зарегистрироваться</Button>
+                    <div className={s.Input}>
+                        <div>
+                            <Button className={s.FontButton} variant="contained" color="primary"
+                                    onClick={logIn}>Вход</Button>
+                        </div>
+                        <div className={s.Button_Reg}>
+                            <Button className={s.FontButtonReg} width='12em' variant="text">Забыли пароль?</Button>
+                            &#183;
+                            <Button className={s.FontButtonReg} variant="text">Зарегистрироваться</Button>
+                        </div>
                     </div>
                 </div>
             </div>

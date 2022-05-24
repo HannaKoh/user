@@ -6,7 +6,7 @@
     border-radius: 1em;
     box-sizing: border-box;
     width: 30em;
-    height: 27em;
+    height: 30em;
     padding: 0em 4em 0em 0.5em;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .Input {
-    margin-top: 1.5em;
+    margin-top: 5em;
     margin-bottom: 1em;
     margin-left: auto;
     margin-right: auto;
@@ -61,6 +61,7 @@
 
 .Pole {
     width: 22em;
+    margin-bottom: 0em;
 }
 
 .Basic {
@@ -73,3 +74,11 @@
 .Exit {
     float: left;
 }
+
+.Block {
+    margin-top: 5em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+

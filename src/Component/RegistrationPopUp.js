@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import logo from './AI-log.svg';
-import {updateAreaRegistration} from "./redux/store";
+
 
 
 const RegistrationPopUp = (props) => {
@@ -65,7 +65,7 @@ const RegistrationPopUp = (props) => {
                         <TextField inputRef={passwordName} onChange={onAreaChange}
                                    className={s.Pole} id="outlined-basic" label="Пароль" variant="outlined"/>
                     </div>
-                    <div>
+                    <div className={s.Input}>
                         <Button className={s.FontButton} variant="contained" color="primary"
                                 onClick={ addUser }>Зарегистрироваться</Button>
                     </div>
